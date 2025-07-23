@@ -1,6 +1,7 @@
 package main
 
 import (
+	utill2 "SW2025_HW1/Hollow_Lozenge/utill"
 	"fmt"
 	"strconv"
 )
@@ -22,32 +23,22 @@ func hollowLozenge(n int) {
 	var starLeft = n
 	var starRight = n - 1
 	var spaceRight = 1
-	var down_starLeft = 2
-	var down_spaceLeft = n - 1
-	var down_starRight = 2
-	var down_spaceRight = n - 4
+	var downStarLeft = 2
+	var downSpaceLeft = n - 1
+	var downStarRight = 2
+	var downSpaceRight = n - 4
 	fmt.Print(" ")
 	for i := 0; i < 2*n-2; i++ {
 		fmt.Print("*")
 	}
-
 	fmt.Print(" ")
 	fmt.Println()
 	if n%2 == 1 || n%2 == 0 {
 		for (spaceLeft+starLeft == n+1 && spaceLeft >= 1 && starLeft >= 1) && (spaceRight+starRight <= n && spaceRight <= n-2 && starRight >= 1) {
-			for i := 1; i < starLeft; i++ {
-				fmt.Print("*")
-			}
-			for i := 0; i < spaceLeft; i++ {
-				fmt.Print(" ")
-			}
-			for i := n; i > starRight; i-- {
-				fmt.Print(" ")
-			}
-			for i := 0; i < starRight; i++ {
-				fmt.Print("*")
-
-			}
+			utill2.PrintLeftStar(starLeft)
+			utill2.PrintLeftSpace(spaceLeft)
+			utill2.PrintRightSpace(starRight, n)
+			utill2.PrintRightStar(starRight)
 			fmt.Println()
 			spaceRight++
 			starRight--
@@ -55,24 +46,14 @@ func hollowLozenge(n int) {
 			spaceLeft++
 		}
 		fmt.Print("*")
-		for i := 0; i < 2*n-2; i++ {
-			fmt.Print(" ")
-		}
+		utill2.PrintLeftSpace(2*n - 2)
 		fmt.Print("*")
 		fmt.Println()
 		for (spaceLeft+starLeft == n+1 && spaceLeft >= 1 && starLeft >= 1) && (spaceRight+starRight <= n && spaceRight <= n-2 && starRight >= 1) {
-			for i := 1; i < starLeft; i++ {
-				fmt.Print("*")
-			}
-			for i := 0; i < spaceLeft; i++ {
-				fmt.Print(" ")
-			}
-			for i := n; i > starRight; i-- {
-				fmt.Print(" ")
-			}
-			for i := 0; i < starRight; i++ {
-				fmt.Print("*")
-			}
+			utill2.PrintLeftStar(starLeft)
+			utill2.PrintLeftSpace(spaceLeft)
+			utill2.PrintRightSpace(starRight, n)
+			utill2.PrintRightStar(starRight)
 			fmt.Println()
 			spaceRight++
 			starRight--
@@ -81,29 +62,18 @@ func hollowLozenge(n int) {
 		}
 
 	}
-	for down_starLeft <= n-1 && down_spaceLeft >= 0 {
-		for i := 0; i < down_starLeft; i++ {
-			fmt.Print("*")
-		}
-		for i := down_spaceLeft; i >= 1; i-- {
-			fmt.Print(" ")
-		}
-		for i := down_spaceRight; i >= 0; i-- {
-			fmt.Print(" ")
-		}
-		for i := 0; i < down_starRight; i++ {
-			fmt.Print("*")
-		}
+	for downStarLeft <= n-1 && downSpaceLeft >= 0 {
+		utill2.PrintRightStar(downStarLeft)
+		utill2.PrintDownLeftSpace(downSpaceLeft)
+		utill2.PrintDownRightSpace(downSpaceRight)
+		utill2.PrintRightStar(downStarRight)
 		fmt.Println()
-		down_spaceLeft--
-		down_starLeft++
-		down_starRight++
-		down_spaceRight--
+		downSpaceLeft--
+		downStarLeft++
+		downStarRight++
+		downSpaceRight--
 	}
 	fmt.Print(" ")
-	for i := 0; i < 2*n-2; i++ {
-		fmt.Print("*")
-	}
+	utill2.PrintRightStar(2*n - 2)
 	fmt.Print(" ")
-
 }
